@@ -35,14 +35,18 @@ public class LoginControllerAlpha implements LoginController {
 		
 		// Store the customer information on the session
 		req.getSession().setAttribute("loggedCustomer", loggedCustomer);
-
 		return loggedCustomer;
 	}
 
 	@Override
 	public String logout(HttpServletRequest req) {
-		// TODO Auto-generated method stub
-		return null;
+//		throw new RuntimeException("Something went wrong");
+		
+		// If session.invalidate() doesn't work
+//		req.getSession().setAttribute("loggedCustomer", null);
+		
+		req.getSession().invalidate();
+		return "login.html";
 	}
 
 }

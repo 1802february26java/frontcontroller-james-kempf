@@ -17,8 +17,10 @@ public class RequestHelper {
 			return LoginControllerAlpha.getInstance().logout(req);
 		case "/FrontController/register.do":
 			return CustomerControllerAlpha.getInstance().register(req);
+		case "/FrontController/getAll.do":
+			return CustomerControllerAlpha.getInstance().getAllCustomers(req);
 		default:
-			return "404.html";
+			return "not-implemented.html";
 		}
 	}
 }

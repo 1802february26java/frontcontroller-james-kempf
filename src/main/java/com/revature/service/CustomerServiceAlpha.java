@@ -27,7 +27,7 @@ public class CustomerServiceAlpha implements CustomerService {
 	}
 
 	@Override
-	public List<Customer> listAllUsers() {
+	public List<Customer> listAllCustomers() {
 		return CustomerRepositoryJdbc.getInstance().selectAll();
 
 	}

@@ -10,7 +10,7 @@ public interface CustomerService {
 	
 	public boolean registerCustomerSecure(Customer customer);
 	
-	public List<Customer> listAllUsers();
+	public List<Customer> listAllCustomers();
 	
 	public Customer authenticate(Customer customer);
 }

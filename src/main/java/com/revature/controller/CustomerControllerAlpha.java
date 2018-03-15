@@ -29,10 +29,28 @@ public class CustomerControllerAlpha implements CustomerController {
 				req.getParameter("password")
 				);
 		// TODO Check if username is taken
-		if (CustomerServiceAlpha.getInstance().registerCustomer(customer)) {
-			return customer;
+//		if (CustomerServiceAlpha.getInstance().registerCustomer(customer)) {
+		// Using a stored procedure
+		if (CustomerServiceAlpha.getInstance().registerCustomerSecure(customer)) {
+			return new ClientMessage("Registration Successful");
+		} else {
+			return new ClientMessage("Registration Failed");
 		}
-		return new ClientMessage("Registration Failed");
+	}
+
+	@Override
+	public Object getAllCustomers(HttpServletRequest req) {
+		// If customer is not logged in, send to login
+		if (req.getSession().getAttribute("loggedCustomer") == null) {
+			return "login.html";
+		}
+		// Client is requesting the view
+		if (req.getParameter("fetch") == null) {
+			return "all-customers.html";
+		} else {
+			// Client is requesting the list of customers
+			return CustomerServiceAlpha.getInstance().listAllCustomers();
+		}
 	}
 
 }

@@ -19,6 +19,17 @@
   </servlet-mapping>
   
   <!-- ERROR PAGES -->
+  <!-- For 500 (Exceptions Thrown) -->
+  <error-page>
+  	<exception-type>java.lang.Throwable</exception-type>
+  	<location>/oops.html</location>
+  </error-page>
+  
+  <!-- For a specific status code -->
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/404.html</location>
+  </error-page>
   
   <!-- Session Objects will expire in 30 minutes -->
   <session-config>
